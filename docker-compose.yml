@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  # Servicio web basado en Apache
+  servicio1:
+    build:
+      context: .  # Directorio actual
+    ports:
+      - "8069:80"  # Exponer puerto 8024 del host al puerto 80 del contenedor
+    restart: always
+
+  # Servicio de base de datos (MySQL)
+  servicio2:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: mysecretpassword
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: myuserpassword
+    ports:
+      - "3306:3306"
+    restart: always
